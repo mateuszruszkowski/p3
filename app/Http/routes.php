@@ -18,3 +18,6 @@ Route::post('/lorem-ipsum-generator', 'LoremGenController@postIndex');
 
 Route::get('/user-generator', 'UserGenController@getIndex');
 Route::post('/user-generator', 'UserGenController@postIndex');
+
+Route::get('/password-generator', 'PassGenController@getIndex');
+Route::post('/password-generator', 'PassGenController@postIndex');

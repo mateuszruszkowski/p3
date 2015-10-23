@@ -47,7 +47,6 @@
             <input type="submit" value="Generate">
         </p>
     </form>
-    </form>
 @stop
 
 @section("result")

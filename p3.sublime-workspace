@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"LoremI",
+				"LoremIpsumGen"
+			],
+			[
 				"curre",
 				"current_user_id"
 			],
@@ -215,6 +219,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "p3.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/UserGenController.php",
+			"settings":
+			{
+				"buffer_size": 1763,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/usergen/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 2152,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Controller.php",
+			"settings":
+			{
+				"buffer_size": 369,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -261,10 +297,39 @@
 	},
 	"expanded_folders":
 	[
-		"/Applications/MAMP/htdocs/p3"
+		"/Applications/MAMP/htdocs/p3",
+		"/Applications/MAMP/htdocs/p3/app",
+		"/Applications/MAMP/htdocs/p3/app/Http",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers",
+		"/Applications/MAMP/htdocs/p3/resources",
+		"/Applications/MAMP/htdocs/p3/resources/assets",
+		"/Applications/MAMP/htdocs/p3/resources/views",
+		"/Applications/MAMP/htdocs/p3/resources/views/content",
+		"/Applications/MAMP/htdocs/p3/resources/views/layouts",
+		"/Applications/MAMP/htdocs/p3/resources/views/loremgen",
+		"/Applications/MAMP/htdocs/p3/resources/views/main",
+		"/Applications/MAMP/htdocs/p3/resources/views/usergen"
 	],
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/p3/resources/views/loremgen/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/layouts/master.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/usergen/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/routes.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/UserGenController.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/MainController.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/LoremGenController.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/main/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/assets/css/style.css",
+		"/Applications/MAMP/htdocs/p3/public/style/style.css",
+		"/Applications/MAMP/htdocs/p3/resources/assets/sass/style.scss",
+		"/Applications/MAMP/htdocs/p3/composer.json",
+		"/Applications/MAMP/htdocs/p3/resources/assets/sass/app.scss",
+		"/Applications/MAMP/htdocs/p3/resources/views/layouts/head.blade.php",
+		"/Applications/MAMP/htdocs/p3/bootstrap/app.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/layout/layout.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/layouts/main.blade.php",
+		"/Applications/MAMP/htdocs/p3/.gitignore",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/FA_invoices/customlogic.php",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/customlogic.php",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/modules/Tasks/Task.php",
@@ -374,29 +439,11 @@
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/customlogic.php",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/views/view.detail.php",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/views/view.edit.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/FA_invoices/customlogic_back2.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/fp_FeesProposals/views/view.list.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Notes/customlogic.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/views/view.edit.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/reesco_send_mail_aw.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/install.log",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/index.html.XX",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/modules/wct_ganttchart/dhtmlxgantt.js",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/modules/AOS_PDF_Templates/PDF_Lib/ttfontdata/dejavusanscondensedB.mtx.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/modules/AOS_PDF_Templates/PDF_Lib/ttfontdata/dejavusanscondensed.mtx.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/include/SugarFields/Fields/Fileupload/SugarFieldFileupload.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/include/include/SugarFields/Fields/Fileupload/SugarFieldFileupload.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/include/include/ListView/ListViewData.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/views/view.detail.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/views/backup_view.list.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/views/backup_view.edit.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/views/backup1201_view.list.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Tasks/Dashlets/PNext7TasksDashlet/PNext7TasksDashlet.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Notes/views/view.edit.php"
+		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/FA_invoices/customlogic_back2.php"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -411,6 +458,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pho",
+			"run",
+			"lipsumgen",
 			"chec",
 			"betwee",
 			"!$mail->send()",
@@ -535,10 +585,7 @@
 			"if(!$mail->send())",
 			"}\n",
 			" throw \"AjaxUI error parsing response\"",
-			"201",
-			"end_date",
-			"end_date'",
-			"$ok"
+			"201"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -576,8 +623,137 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "p3.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Http/Controllers/UserGenController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1763,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								153,
+								153
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/views/usergen/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1838,
+								1838
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Http/Controllers/Controller.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 369,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -633,6 +809,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"app",
+				"bootstrap/app.php"
+			],
 			[
 				"customtaskcust",
 				"custom/modules/Tasks/customlogic.php"
