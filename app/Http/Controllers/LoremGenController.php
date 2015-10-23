@@ -5,82 +5,60 @@ namespace P3\Http\Controllers;
 use Illuminate\Http\Request;
 use P3\Http\Requests;
 use P3\Http\Controllers\Controller;
+use Badcow\LoremIpsum\Generator as LoremIpsumGen;
 
 class LoremGenController extends Controller
 {
+    private $LoremIpsumGen = null;
+    const PARAGRAPHS_NUMBER = 3;
+    
+    /**
+    * Returns the controller's lorem ipsum generator if it exists or creates
+    * and then returns it if it does not.
+    *
+    * @link https://github.com/Badcow/LoremIpsum
+    * @return Generator The controller's lorem ipsum generator
+    */
+    private function getLipsumGen() {
+
+        if ($this->LoremIpsumGen == null) {
+            $this->LoremIpsumGen = new LoremIpsumGen();
+        }
+
+        return $this->LoremIpsumGen;
+    }
+
+
+    private function getParagraphsNumber() {
+      if (isset($_POST['paragraphsNumber'])) {
+          if (strlen($_POST['paragraphsNumber'])<2 && $_POST['paragraphsNumber'] != 0 && is_numeric($_POST['paragraphsNumber'])) {
+            return (int)$_POST['paragraphsNumber'];
+          }
+      }
+      return self::PARAGRAPHS_NUMBER;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
-        //
+        return view("loremgen.index", ["paragraphsNumber" => self::PARAGRAPHS_NUMBER]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function postIndex()
     {
-        //
+        $numberOfParagraphs = $this->getParagraphsNumber();
+        $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);
+        return view("loremgen.index", ["paragraphs" => $paragraphs, "paragraphsNumber" => strval($numberOfParagraphs)] );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

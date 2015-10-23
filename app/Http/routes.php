@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'MainController@getIndex');
+
+Route::get('/lorem-ipsum-generator', 'LoremGenController@getIndex');
+Route::post('/lorem-ipsum-generator', 'LoremGenController@postIndex');
