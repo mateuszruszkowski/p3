@@ -13,11 +13,10 @@ class LoremGenController extends Controller
     const PARAGRAPHS_NUMBER = 3;
     
     /**
-    * Returns the controller's lorem ipsum generator if it exists or creates
-    * and then returns it if it does not.
+    * Returns the controller of lorem ipsum generator if it exists or create it
     *
     * @link https://github.com/Badcow/LoremIpsum
-    * @return Generator The controller's lorem ipsum generator
+    * @return Generator The controller lorem ipsum generator
     */
     private function getLipsumGen() {
 
