@@ -21,36 +21,34 @@ When you generate your password, you can bookmark page's link to generate simila
     			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 				<div class="form-group"> {{-- Words number --}}
-              		{!! Form::label('words_number', 'Number of words (max 99)') !!}
-              		{!! Form::input('number', 'words_number', $values['words_number'], ['min' => '1', 'max' => '99']) !!}
-              	</div>
+        		{!! Form::label('words_number', 'Number of words (max 99)') !!}
+        		{!! Form::input('number', 'words_number', $values['words_number'], ['min' => '1', 'max' => '99']) !!}
+      	</div>
 				
 				<div class="form-group"> {{-- Number of numbers :) --}}
-              		{!! Form::label('numbers', 'Numbers (max 10) ') !!}
-              		{!! Form::input('number', 'numbers', $values['numbers'], ['min' => '0', 'max' => '10']) !!}
-              	</div>
+        		{!! Form::label('numbers', 'Numbers (max 10) ') !!}
+            {!! Form::input('number', 'numbers', $values['numbers'], ['min' => '0', 'max' => '10']) !!}
+        </div>
 
-              	<div class="form-group"> {{-- Number of symbols :) --}}
-              		{!! Form::label('symbols', 'Symbols (max 10) ') !!}
-              		{!! Form::input('number', 'symbols', $values['symbols'], ['min' => '0', 'max' => '10']) !!}
-              	</div>
+      	<div class="form-group"> {{-- Number of symbols :) --}}
+      	   {!! Form::label('symbols', 'Symbols (max 10) ') !!}
+      	   {!! Form::input('number', 'symbols', $values['symbols'], ['min' => '0', 'max' => '10']) !!}
+      	</div>
 
-              	<div class="form-group"> {{-- Max length :) --}}
-              		{!! Form::label('max_length', 'Max length (max 99) ') !!}
-              		{!! Form::input('number', 'max_length', $values['max_length'], ['min' => '1', 'max' => '99']) !!}
-              	</div>
+        <div class="form-group"> {{-- Max length :) --}}
+        	{!! Form::label('max_length', 'Max length (max 99) ') !!}
+        	{!! Form::input('number', 'max_length', $values['max_length'], ['min' => '1', 'max' => '99']) !!}
+        </div>
 
-              	<div class="form-group"> {{-- Separator --}}
-              		{!! Form::label('separator', 'Separator') !!}
-              		{!! Form::input('test', 'separator', $values['separator']) !!}
-              	</div>
+        <div class="form-group"> {{-- Separator --}}
+        	{!! Form::label('separator', 'Separator') !!}
+        	{!! Form::input('test', 'separator', $values['separator']) !!}
+        </div>
 
 				{!! Form::submit('Generate', array('class' => 'btn btn-primary')) !!}
 				
 			</form>
-
-			<br />
-			<br />
+      
 			<p>
 				<a href="/password-generator">Reset form to default</a>
 			</p>

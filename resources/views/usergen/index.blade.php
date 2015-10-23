@@ -2,51 +2,63 @@
 @extends('layouts.master')
 
 @section('title')
-    User Generator
+    Random User Generator
 @stop
 
 @section("heading")
-    User Generator
+    Random User Generator
 @stop
 
 @section("description")
-    for paragraphs
+    Write number of users, select information about them, choose data format and copy it to clipboard.
 @stop
 
 @section("form")
     <!-- Form for the Lorem Ipsum Generator -->
     <form id="user_generator" method="POST" action="/user-generator">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <p class="optionContent">
-            <!-- Text field for user to specify number of random users to generate -->
-            <label for="users">Users:</label>
-            <input id="users" type="text" name="users" maxlength="3" size="1" value=
-                <?php
-                    if (!isset($_POST["users"]))
-                        echo "3"; //defaulted # of users, if empty
-                    else
-                        echo $_POST["users"];
-                ?>>
 
-            <!-- Checkbox for including random user birthdate -->
-            <input id="birthdate" type="checkbox" name="birthdate"
-                <?php
-                    if (isset($_POST["birthdate"]))
-                        echo "checked";
-                ?>>
-            <label for="birthdate">Birthdate</label>
+        {{-- Text field for user to specify number of random users to generate  --}} 
+        <div class="form-group"> {{-- Number of users --}}
+                {!! Form::label('users', 'Users (max 99): ') !!}
+                {!! Form::input('number', 'users', $values['users'], ['min' => '1', 'max' => '99']) !!}
+        </div>
 
-            <!-- Checkbox for including random user profile description -->
-            <input id="profile" type="checkbox" name="profile"
-                <?php
-                    if (isset($_POST["profile"]))
-                        echo "checked";
-                ?>>
-            <label for="profile">Profile Description</label>
-            
-            <input type="submit" value="Generate">
-        </p>
+        {{-- Checkbox include users birthdate  --}} 
+        <div class="form-group"> {{-- Add birth date --}}
+                {!! Form::label('birthdate', 'Birthdate ') !!}
+                {!! Form::checkbox('birthdate', 'birthdate', $values['birthdate']) !!}
+        </div>
+
+        {{-- Checkbox include users profile --}} 
+        <div class="form-group"> {{-- Add profile --}}
+                {!! Form::label('profile', 'Profile ') !!}
+                {!! Form::checkbox('profile', 'profile', $values['profile']) !!}
+        </div>
+
+        {{-- Checkbox include users country  --}} 
+        <div class="form-group"> {{-- Add country --}}
+                {!! Form::label('country', 'Country ') !!}
+                {!! Form::checkbox('country', 'country', $values['country']) !!}
+        </div>
+
+        {{-- Checkbox include users gender --}} 
+        <div class="form-group"> {{-- Add gender --}}
+                {!! Form::label('gender', 'Gender ') !!}
+                {!! Form::checkbox('gender', 'gender', $values['gender']) !!}
+        </div>
+
+        {{-- Radio to choose data format --}} 
+        <div class="form-group"> {{-- Choose data format --}}
+                {!! Form::label('format', 'Choose data format: ') !!}
+                {!! Form::radio('format', 'Text', true) !!}
+                {!! Form::radio('format', 'CSV') !!}
+        </div>
+
+        {!! Form::submit('Generate', array('class' => 'btn btn-primary')) !!}
+        
     </form>
+
 @stop
 
 @section("result")

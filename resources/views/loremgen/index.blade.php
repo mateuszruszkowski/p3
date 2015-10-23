@@ -10,7 +10,7 @@
 @stop
 
 @section("description")
-    for paragraphs
+    Write number of paragraphs to generate, copy to clipboard and feel free to use it anywhere.
 @stop
 
 @section("form")

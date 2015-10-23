@@ -9,7 +9,12 @@ use Faker\Factory as Faker;
 
 class UserGenController extends Controller
 {
-    // TODO define const
+    const USERS = 5;
+    const BIRTHDATE = true;
+    const PROFILE = false;
+    const COUNTRY = false;
+    const GENDER = false;
+    const FORMAT = 'text';
 
     // TODO add CSV generator
 
@@ -25,14 +30,37 @@ class UserGenController extends Controller
       return $this->faker;
     }
 
+    private function getValidationRules() {
+      return ['users'     =>   'integer|min:1|max:99', // must be an integer between 1 and 99
+              'birthdate'  =>   'boolean',  
+              'profile'   =>   'boolean', 
+              'country'   =>   'boolean',
+              'gender'    =>   'boolean',
+              'format'    =>   'in:text,csv']; 
+    }
+
+    private function getValues($request) {
+      return [
+        'users'     => ($request->exists('users') )     ? $request->get('users')    : self::USERS,
+        'birthdate'  => ($request->exists('birthdate') )  ? $request->get('birthdate') : self::BIRTHDATE,
+        'profile'   => ($request->exists('profile') )   ? $request->get('profile')  : self::PROFILE,
+        'country'   => ($request->exists('country') )   ? $request->get('country')  : self::COUNTRY,
+        'gender'    => ($request->exists('gender') )    ? $request->get('gender')   : self::GENDER,
+        'format'    => ($request->exists('format') )    ? $request->get('format')   : self::FORMAT,
+      ];
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function getIndex(Request $request)
     {
-        return view("usergen.index");
+        $this->validate($request, $this->getValidationRules());
+        $values = $this->getValues($request);
+        $users = array();
+        return view("usergen.index", ['values' => $values, 'users' => $users]);
     }
 
 
@@ -43,29 +71,28 @@ class UserGenController extends Controller
      */
     public function postIndex(Request $request)
     {
-        $this->validate($request, [
-            "users" => "required|integer|min:1"
-        ]);
+        $this->validate($request, $this->getValidationRules());
+        $values = $this->getValues($request);
+       
+
         //Create user generator
         $faker = $this->getFaker();
-        $num_users = $request->input('users');
-        $birthdate = $request->input('birthdate'); 
-        $profile = $request->input('profile'); 
 
         $users = Array(); //for store users
 
         //Generate users
         for ($i=0; $i < $num_users; $i++) {
             $users[$i] = Array("name" => $this->faker->name);
-            if (!empty($birthdate)){
+            if (BIRTHDATE){
                 $users[$i] = array_merge($users[$i], Array("birthdate" => $this->faker->dateTimeThisCentury->format("Y-m-d")));
             }
-            if (!empty($profile)){
+            if (PROFILE){
                 $users[$i] = array_merge($users[$i], Array("profile" => $this->faker->text));
             }
         }
+
+         return view("usergen.index", ['values' => $values, 'users' => $users]);
        
-        return view("usergen.index", ["users" => $users, "birthdate"=>$birthdate, "profile"=>$profile]);
     }
 
 
