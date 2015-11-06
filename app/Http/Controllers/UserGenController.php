@@ -9,12 +9,13 @@ use Faker\Factory as Faker;
 
 class UserGenController extends Controller
 {
-    const USERS = 5;
+    const USERS_NUMBER = 5;
     const BIRTHDATE = true;
     const PROFILE = false;
     const COUNTRY = false;
     const GENDER = false;
-    const FORMAT = 'text';
+    const FORMAT_TEXT = true;
+    const FORMAT_CSV = false;
 
     // TODO add CSV generator
 
@@ -31,23 +32,65 @@ class UserGenController extends Controller
     }
 
     private function getValidationRules() {
-      return ['users'     =>   'integer|min:1|max:99', // must be an integer between 1 and 99
-              'birthdate'  =>   'boolean',  
-              'profile'   =>   'boolean', 
-              'country'   =>   'boolean',
-              'gender'    =>   'boolean',
-              'format'    =>   'in:text,csv']; 
+      return ['users'       =>   'integer|min:1|max:99', // integer between 1 and 99
+              'birthdate'   =>   'boolean',
+              'profile'     =>   'boolean', 
+              'country'     =>   'boolean',
+              'gender'      =>   'boolean',
+              'formatText'  =>   'boolean',
+              'formatCSV'   =>   'boolean',
+              ]; 
     }
 
     private function getValues($request) {
       return [
-        'users'     => ($request->exists('users') )     ? $request->get('users')    : self::USERS,
-        'birthdate'  => ($request->exists('birthdate') )  ? $request->get('birthdate') : self::BIRTHDATE,
-        'profile'   => ($request->exists('profile') )   ? $request->get('profile')  : self::PROFILE,
-        'country'   => ($request->exists('country') )   ? $request->get('country')  : self::COUNTRY,
-        'gender'    => ($request->exists('gender') )    ? $request->get('gender')   : self::GENDER,
-        'format'    => ($request->exists('format') )    ? $request->get('format')   : self::FORMAT,
+        'users'     => ($request->exists('users') )     ? $request->get('users')    :     self::USERS_NUMBER,
+        'birthdate' => ($request->exists('birthdate') )  ? $request->get('birthdate') :  self::BIRTHDATE,
+        'profile'   => ($request->exists('profile') )   ? $request->get('profile')  :     self::PROFILE,
+        'country'   => ($request->exists('country') )   ? $request->get('country')  :     self::COUNTRY,
+        'gender'    => ($request->exists('gender') )    ? $request->get('gender')   :     self::GENDER,
+        'formatText'    => ($request->exists('formatText') )  ? $request->get('formatText')  : self::FORMAT_TEXT,
+        'formatCSV'    => ($request->exists('formatCSV') )    ? $request->get('formatCSV')   : self::FORMAT_CSV,
       ];
+    }
+
+    private function getUsers($values){
+        $genders = array(0=>"m",1=>"f");
+        //for store users
+        $users = Array(); 
+        //Generate users
+        for ($i=0; $i < $values['users']; $i++) {
+
+            if ($values['gender']){
+              $users[$i] = Array("gender" => $genders[rand(0,1)]);
+
+              if($users[$i]["gender"]=="m"){
+                $users[$i] = array_merge($users[$i], Array("name" => $this->faker->firstNameMale ) );
+              }else{
+                $users[$i] = array_merge($users[$i], Array("name" => $this->faker->firstNameFemale ) );
+              }
+
+              $users[$i]["name"] .= ' '.$this->faker->firstName;
+
+            }else{
+              $users[$i] = Array("name" => $this->faker->name);
+            }
+
+            
+            if ($values['birthdate']){
+                $users[$i] = array_merge($users[$i], Array("birthdate" => $this->faker->dateTimeThisCentury->format("Y-m-d")));
+            }
+            if ($values['profile']){
+                $users[$i] = array_merge($users[$i], Array("profile" => $this->faker->sentence));
+            }
+            if ($values['country']){
+                $users[$i] = array_merge($users[$i], Array("country" => $this->faker->country));
+            }
+
+
+        }
+        
+        return $users;
     }
 
     /**
@@ -59,8 +102,11 @@ class UserGenController extends Controller
     {
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
+
+        // Empty user array
         $users = array();
-        return view("usergen.index", ['values' => $values, 'users' => $users]);
+
+        return view("content.usergenerator", ['values' => $values, 'users' => $users]);
     }
 
 
@@ -71,27 +117,17 @@ class UserGenController extends Controller
      */
     public function postIndex(Request $request)
     {
+
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
-       
-
-        //Create user generator
+      
+        // Create user generator
         $faker = $this->getFaker();
 
-        $users = Array(); //for store users
-
-        //Generate users
-        for ($i=0; $i < $num_users; $i++) {
-            $users[$i] = Array("name" => $this->faker->name);
-            if (BIRTHDATE){
-                $users[$i] = array_merge($users[$i], Array("birthdate" => $this->faker->dateTimeThisCentury->format("Y-m-d")));
-            }
-            if (PROFILE){
-                $users[$i] = array_merge($users[$i], Array("profile" => $this->faker->text));
-            }
-        }
-
-         return view("usergen.index", ['values' => $values, 'users' => $users]);
+        // Generate users
+        $users = $this->getUsers($values);
+        
+        return view("content.usergenerator", ['values' => $values, 'users' => $users]);
        
     }
 

@@ -45,7 +45,7 @@ class LoremGenController extends Controller
      */
     public function getIndex()
     {
-        return view("loremgen.index", ["paragraphsNumber" => self::PARAGRAPHS_NUMBER]);
+        return view("content.loremgenerator", ["paragraphsNumber" => self::PARAGRAPHS_NUMBER]);
     }
 
     /**
@@ -57,7 +57,7 @@ class LoremGenController extends Controller
     {
         $numberOfParagraphs = $this->getParagraphsNumber();
         $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);
-        return view("loremgen.index", ["paragraphs" => $paragraphs, "paragraphsNumber" => strval($numberOfParagraphs)] );
+        return view("content.loremgenerator", ["paragraphs" => $paragraphs, "paragraphsNumber" => strval($numberOfParagraphs)] );
     }
 
 }

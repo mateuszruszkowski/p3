@@ -15,7 +15,7 @@ class MainController extends Controller
      */
     public function getIndex()
     {
-        return view('main.index');
+        return view('content.main');
     }
 
    

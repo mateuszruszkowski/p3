@@ -137,7 +137,7 @@ class PassGenController extends Controller
     {
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
-        return view("passgen.index", ['values' => $values]);
+        return view("content.passwordgenerator", ['values' => $values]);
     }
 
     /**
@@ -150,7 +150,7 @@ class PassGenController extends Controller
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
         $passString = $this->getPassword($values);
-        return view("passgen.index", ['values' => $values, 'passString' => $passString ]);
+        return view("content.passwordgenerator", ['values' => $values, 'passString' => $passString ]);
     }
 
 }

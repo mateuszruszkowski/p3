@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.fullwidth.master')
 
 {{--    `title` contain page title     --}}
 @section('title')

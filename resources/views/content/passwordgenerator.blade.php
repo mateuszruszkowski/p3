@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.leftsidebar.master')
 
 @section('title')
 xkcd Password Generator

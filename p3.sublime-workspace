@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"back",
+				"background"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"pass",
+				"passString"
+			],
+			[
 				"LoremI",
 				"LoremIpsumGen"
 			],
@@ -220,34 +232,58 @@
 	"buffers":
 	[
 		{
-			"file": "p3.sublime-project",
-			"settings":
-			{
-				"buffer_size": 45,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/Http/Controllers/UserGenController.php",
 			"settings":
 			{
-				"buffer_size": 1763,
+				"buffer_size": 4138,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "resources/views/usergen/index.blade.php",
+			"file": "app/Http/Controllers/MainController.php",
 			"settings":
 			{
-				"buffer_size": 2152,
+				"buffer_size": 360,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/Controller.php",
+			"file": "resources/views/layouts/leftsidebar/master.blade.php",
 			"settings":
 			{
-				"buffer_size": 369,
+				"buffer_size": 4447,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/layouts/fullwidth/master.blade.php",
+			"settings":
+			{
+				"buffer_size": 3569,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/main/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 5413,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/css/style.css",
+			"settings":
+			{
+				"buffer_size": 665,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/passgen/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 2356,
 				"line_ending": "Unix"
 			}
 		}
@@ -300,33 +336,40 @@
 		"/Applications/MAMP/htdocs/p3",
 		"/Applications/MAMP/htdocs/p3/app",
 		"/Applications/MAMP/htdocs/p3/app/Http",
-		"/Applications/MAMP/htdocs/p3/app/Http/Controllers",
+		"/Applications/MAMP/htdocs/p3/public",
+		"/Applications/MAMP/htdocs/p3/public/css",
 		"/Applications/MAMP/htdocs/p3/resources",
 		"/Applications/MAMP/htdocs/p3/resources/assets",
 		"/Applications/MAMP/htdocs/p3/resources/views",
-		"/Applications/MAMP/htdocs/p3/resources/views/content",
 		"/Applications/MAMP/htdocs/p3/resources/views/layouts",
 		"/Applications/MAMP/htdocs/p3/resources/views/loremgen",
 		"/Applications/MAMP/htdocs/p3/resources/views/main",
+		"/Applications/MAMP/htdocs/p3/resources/views/passgen",
 		"/Applications/MAMP/htdocs/p3/resources/views/usergen"
 	],
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/p3/resources/views/loremgen/index.blade.php",
-		"/Applications/MAMP/htdocs/p3/resources/views/layouts/master.blade.php",
 		"/Applications/MAMP/htdocs/p3/resources/views/usergen/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/main/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/PassGenController.php",
+		"/Applications/MAMP/htdocs/p3/public/css/style.css",
+		"/Applications/MAMP/htdocs/p3/resources/views/loremgen/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/passgen/index.blade.php",
+		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/LoremGenController.php",
+		"/Applications/MAMP/htdocs/p3/config/app.php",
+		"/Applications/MAMP/htdocs/p3/storage/framework/views/6fe066313950a5a75a7676fcc92690a7",
+		"/Applications/MAMP/htdocs/p3/p3.sublime-project",
+		"/Applications/MAMP/htdocs/p3/bootstrap/app.php",
+		"/Applications/MAMP/htdocs/p3/composer.json",
 		"/Applications/MAMP/htdocs/p3/app/Http/routes.php",
+		"/Applications/MAMP/htdocs/p3/resources/views/layouts/master.blade.php",
 		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/UserGenController.php",
 		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/MainController.php",
-		"/Applications/MAMP/htdocs/p3/app/Http/Controllers/LoremGenController.php",
-		"/Applications/MAMP/htdocs/p3/resources/views/main/index.blade.php",
 		"/Applications/MAMP/htdocs/p3/resources/assets/css/style.css",
 		"/Applications/MAMP/htdocs/p3/public/style/style.css",
 		"/Applications/MAMP/htdocs/p3/resources/assets/sass/style.scss",
-		"/Applications/MAMP/htdocs/p3/composer.json",
 		"/Applications/MAMP/htdocs/p3/resources/assets/sass/app.scss",
 		"/Applications/MAMP/htdocs/p3/resources/views/layouts/head.blade.php",
-		"/Applications/MAMP/htdocs/p3/bootstrap/app.php",
 		"/Applications/MAMP/htdocs/p3/resources/views/layout/layout.blade.php",
 		"/Applications/MAMP/htdocs/p3/resources/views/layouts/main.blade.php",
 		"/Applications/MAMP/htdocs/p3/.gitignore",
@@ -433,13 +476,7 @@
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/.idea/dataSources.ids",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/.idea/dataSources.local.xml",
 		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/.idea/dataSources.xml",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/cache/themes/Suite7/css/style.css",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/Extension/modules/Project/Ext/Menus/CustomMenu.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/Accounts/customlogic.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/customlogic.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/views/view.detail.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/bdg_Buildings/views/view.edit.php",
-		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/custom/modules/FA_invoices/customlogic_back2.php"
+		"/Users/grucha/Documents/PhpstormProjects/RMS stable-kopia/cache/themes/Suite7/css/style.css"
 	],
 	"find":
 	{
@@ -458,6 +495,42 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"page-de",
+			"nav-c",
+			"/>\n",
+			"gender",
+			"separator",
+			"max_length",
+			"symbols",
+			"numbers",
+			"words_numbe",
+			"getvalue",
+			"birthdate",
+			"Birthdate",
+			"birthdate",
+			"Birthdate",
+			"birthdate",
+			"Birthdate",
+			"birthdate",
+			"getValidationRules",
+			"words_number",
+			"$wn",
+			"separator",
+			"max_length",
+			"Max length",
+			"numbers",
+			"Numbers",
+			"numbers",
+			"Numbers",
+			"numbers",
+			"words_number",
+			"'Illuminate\\",
+			"words_number",
+			"Symbols",
+			"Numbers",
+			"Symbols",
+			"wordsNumber",
+			"paragraphsNumber",
 			"pho",
 			"run",
 			"lipsumgen",
@@ -549,43 +622,7 @@
 			"zalegle",
 			"buil",
 			"to_pdf",
-			"dopdf",
-			"style",
-			"footer",
-			"margin-top",
-			"footer",
-			"foot",
-			"footer",
-			"margin-top: 30px;",
-			"#footer",
-			"$department_invoices",
-			"Invoices to accept",
-			"$department_invoices",
-			"bbb",
-			"invoice",
-			"my task",
-			"br />",
-			"bgItem",
-			"<br /<br />",
-			"color:red;class=",
-			"table",
-			" ",
-			"table",
-			"spacing",
-			"collapse",
-			"Tasks – Today",
-			"helvetica, sans-serif",
-			"helv",
-			"summ",
-			"56",
-			"nbsp",
-			"echo",
-			"br",
-			"print_r",
-			"if(!$mail->send())",
-			"}\n",
-			" throw \"AjaxUI error parsing response\"",
-			"201"
+			"dopdf"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -628,50 +665,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "p3.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 45,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								45
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/Http/Controllers/UserGenController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1763,
+						"buffer_size": 4138,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								153,
-								153
+								641,
+								641
 							]
 						],
 						"settings":
@@ -680,64 +686,31 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "resources/views/usergen/index.blade.php",
+					"buffer": 1,
+					"file": "app/Http/Controllers/MainController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2152,
+						"buffer_size": 360,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1838,
-								1838
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/Http/Controllers/Controller.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								360,
+								360
 							]
 						],
 						"settings":
@@ -751,7 +724,168 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/views/layouts/leftsidebar/master.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4447,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2554,
+								2554
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 826.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/layouts/fullwidth/master.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3169,
+								3169
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 453.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/views/main/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								312,
+								312
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								558,
+								558
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 145.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/views/passgen/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								28
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -809,6 +943,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"app.",
+				"bootstrap/app.php"
+			],
 			[
 				"app",
 				"bootstrap/app.php"

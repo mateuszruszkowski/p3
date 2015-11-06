@@ -1,5 +1,4 @@
-
-@extends('layouts.master')
+@extends('layouts.leftsidebar.master')
 
 @section('title')
     Random User Generator
