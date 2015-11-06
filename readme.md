@@ -14,12 +14,12 @@ Second generate custom users profiles, also easy to copy and ready to convert to
 Last one generate xkcd passwords, and this is copy of webapp from p2, but wrote using laravel.
 
 ## Demo
-https://youtu.be/ZBK9uGuA1lg
+
 
 ## Details for teaching team
 
 I have scraped words from http://www.paulnoll.com/Books/Clear-English/ and add link to outside code section
-To generate html elements I use illuminate/html, which laravel used in previous versions
+To generate html elements I use illuminate/html, which laravel used in previous versionst
 
 ## Outside code
 * Bootstrap [http://getbootstrap.com/](http://getbootstrap.com/)
