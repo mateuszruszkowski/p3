@@ -49,13 +49,17 @@
           <div class="row">
             <div class="col-md-12">
               <h1 class="center">Developers best friend</h1>
-              <h4 class="center page-description">Some features which can hel developer in everyday job. You can find there paragraphs generator with "Lorem ipsum" sentences, custom user generator and even password generator. </h4>
+              <h4 class="center page-description">Some features which can help developer in everyday job. You can find there paragraphs generator with "Lorem ipsum" sentences, custom user generator and even password generator. </h4>
             </div>
           </div>
 
           <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 nav-content">
                   <div class="list-group table-of-contents">
+                    <a class="list-group-item" href="/">
+                      <h4 class="list-group-item-heading">Home page</h4>
+                      <p class="list-group-item-text">With 3 links</p>
+                    </a>
                     <a class="list-group-item" href="/lorem-ipsum-generator/">
                       <h4 class="list-group-item-heading">Generate Paragraphs</h4>
                       <p class="list-group-item-text">That you will never remember</p>

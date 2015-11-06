@@ -12,8 +12,6 @@ xkcd Password Generator
 This Web App generates random passwords which are really difficult to break.<br />
 If you need you can add numbers and/or specials chars to your new password.<br />
 You can also change a separator char and transform words by uppercase or lowercase them.<br />
-<br />
-When you generate your password, you can bookmark page's link to generate similar password in the future.<br />
 @stop
 
 @section("form")
