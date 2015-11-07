@@ -51,7 +51,7 @@
                   <div class="list-group table-of-contents">
                     <a class="list-group-item" href="/">
                       <h4 class="list-group-item-heading">Home page</h4>
-                      <p class="list-group-item-text">With 3 links</p>
+                      <p class="list-group-item-text">With description of a project</p>
                     </a>
                     <a class="list-group-item" href="/lorem-ipsum-generator/">
                       <h4 class="list-group-item-heading">Generate Paragraphs</h4>

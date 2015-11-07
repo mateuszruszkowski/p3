@@ -15,12 +15,14 @@ class PassGenController extends Controller
     const SEPARATOR = '-';
     const ADD_NUM = 0;
     const ADD_SYM = 0;
+    const CASES = 0; // First letter
 
     private function getValidationRules() {
       return ['words_number' =>   'integer|min:1|max:99', // must be an integer between 1 and 99
              'numbers' =>   'integer|min:0|max:10', // must be an integer between 1 and 10  
              'symbols' =>   'integer|min:0|max:10', // must be an integer between 1 and 10
-             'max_length' =>   'integer|min:1|max:99']; // must be an integer between 1 and 99
+             'max_length' =>   'integer|min:1|max:99', // must be an integer between 1 and 99
+             'cases' =>   'integer|min:0|max:2'];
     }
 
 
@@ -31,6 +33,7 @@ class PassGenController extends Controller
         'symbols'  => ($request->exists('symbols') ) ? $request->get('symbols') : self::SYMBOLS,
         'max_length'  => ($request->exists('max_length') ) ? $request->get('max_length') : self::MAX_LENGTH,
         'separator'  => ($request->exists('separator') ) ? $request->get('separator') : self::SEPARATOR,
+        'cases'  => ($request->exists('cases') ) ? $request->get('cases') : self::CASES,
       ];
     }
 
@@ -83,19 +86,18 @@ class PassGenController extends Controller
                 if ($i < $values['numbers'] && $addN){    $passArray[$i] .= rand(0, 9);   }
                 if ($i < $values['symbols'] && $addS){    $passArray[$i] .= $specials_chars[ rand(0, 7)]; }
 
-                // I haven't to much time ;(
-                // add custom cases 
-                // switch ($case) {
-                //     case 0:
-                //         $passArray[$i] = ucfirst(strtolower($passArray[$i]));
-                //         break;
-                //     case 1:
-                //         $passArray[$i] = strtoupper($passArray[$i]);
-                //         break;
-                //     case 2:
-                //         $passArray[$i] = strtolower($passArray[$i]);
-                //         break;
-                // }
+                //add custom cases 
+                switch ($values['cases'] ) {
+                    case 0:
+                        $passArray[$i] = ucfirst(strtolower($passArray[$i]));
+                        break;
+                    case 1:
+                        $passArray[$i] = strtoupper($passArray[$i]);
+                        break;
+                    case 2:
+                        $passArray[$i] = strtolower($passArray[$i]);
+                        break;
+                }
 
             }
 
@@ -127,6 +129,25 @@ class PassGenController extends Controller
 
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getGenerated(Request $request)
+    {
+        $this->validate($request, $this->getValidationRules());
+        $values = $this->getValues($request);
+
+        if($request->get('passwordg')){
+            $passString = $request->get('passwordg');   
+        }else{
+            $passString = $this->getPassword($values);    
+        }
+        
+        return view("content.passwordgenerator", ['values' => $values, 'passString' => $passString ]);
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -137,20 +158,8 @@ class PassGenController extends Controller
     {
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
-        return view("content.passwordgenerator", ['values' => $values]);
-    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postIndex(Request $request)
-    {
-        $this->validate($request, $this->getValidationRules());
-        $values = $this->getValues($request);
-        $passString = $this->getPassword($values);
-        return view("content.passwordgenerator", ['values' => $values, 'passString' => $passString ]);
+        return view("content.passwordgenerator", ['values' => $values]);
     }
 
 }

@@ -21,5 +21,6 @@ Route::get('/user-generator', 'UserGenController@getIndex');
 Route::post('/user-generator', 'UserGenController@postIndex');
 Route::post('/user-generator/download', 'UserGenController@postDownload');
 
+// not generated password getIndex, generated getIndexGenerated
+Route::get('/password-generator/generated', 'PassGenController@getGenerated');
 Route::get('/password-generator', 'PassGenController@getIndex');
-Route::post('/password-generator', 'PassGenController@postIndex');

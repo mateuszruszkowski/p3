@@ -1,7 +1,7 @@
 
 //------------------------------------------------------------------------
 // https://developers.google.com/web/updates/2015/04/cut-and-copy-commands
-// This is used in user and lorem ipsum generator
+// This is used in users and lorem ipsum generator
 //------------------------------------------------------------------------
 var cutTextareaBtn = document.querySelector('#copy');
 
@@ -19,6 +19,20 @@ if(cutTextareaBtn != null){
 	  }  
 	});
 }
+
+// Writed in jQuery to use with generated password
+$( document ).on("click", "#copyPass", function(){
+	$("#toCopy").select();
+
+	console.log($("#toCopy").val() );
+	try {  
+		var successful = document.execCommand('copy');  
+		var msg = successful ? 'successfully' : 'unsuccessfully';  
+		console.log('You ' + msg + ' copied generated text.');  
+	} catch(err) {  
+		console.log('Oops, unable to copy');  
+	} 
+});
 
 /*
  * Users generator
@@ -45,3 +59,38 @@ $( document ).on("click", '#download_lorem', function(){
 $( document ).on("click", '#generate_lorem', function(){
 	$("Form").attr("action","/lorem-ipsum-generator").submit();
 });
+
+//------------------------------------------------------------------------
+// http://stackoverflow.com/questions/3024745/cross-browser-bookmark-add-to-favorites-javascript
+//------------------------------------------------------------------------
+
+$( document ).on("click", "#addBookmark", function() {
+ 	var title = 'Generated password';
+ 	var password = $("#toCopy").val();
+
+ 	if( $("#bookmark_name").val().length >0 ) {
+ 		title = $("#bookmark_name").val();
+ 	}
+
+ 	// add password to link if itisn't exist jet
+ 	if( window.location.href.indexOf('passwordg')==-1){
+ 		window.history.pushState("Generated password", title, window.location.href+"&passwordg="+password );	
+ 	}
+
+ 	document.title = title;
+
+	if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+	  window.sidebar.addPanel(document.title,window.location.href,'');
+	} else if(window.external && ('AddFavorite' in window.external)) { // IE Favorite
+	  window.external.AddFavorite(location.href,document.title);
+	} else if(window.opera && window.print) { // Opera Hotlist
+	  this.title=document.title;
+	  return true;
+	} else { // webkit - safari/chrome
+	  alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+	}
+});
+
+
+
+
