@@ -2,6 +2,7 @@
 
 namespace P3\Http\Controllers;
 
+use Response;
 use Illuminate\Http\Request;
 use P3\Http\Requests;
 use P3\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ class LoremGenController extends Controller
 {
     private $LoremIpsumGen = null;
     const PARAGRAPHS_NUMBER = 3;
+    const GENERATED_TEXT = 'Nic nie zostało wygenerowane.';
     
     /**
     * Returns the controller of lorem ipsum generator if it exists or create it
@@ -37,13 +39,33 @@ class LoremGenController extends Controller
       return self::PARAGRAPHS_NUMBER;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postDownload()
+    {
+      $numberOfParagraphs = $this->getParagraphsNumber();
+      $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);
+      $values['generated'] = $_POST['generated_text'];
+        
+      $filename = "lorem_ipsum.txt";
+
+      $handle = fopen($filename, 'w+');
+      file_put_contents($filename, $values['generated']);
+      fclose($handle); 
+        
+      $headers = array('Content-Type' => 'text/plain');
+      return Response::download($filename, (String)$filename, $headers);
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         return view("content.loremgenerator", ["paragraphsNumber" => self::PARAGRAPHS_NUMBER]);
     }
@@ -53,7 +75,7 @@ class LoremGenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postIndex()
+    public function postIndex(Request $request)
     {
         $numberOfParagraphs = $this->getParagraphsNumber();
         $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);

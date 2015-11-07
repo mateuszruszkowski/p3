@@ -47,13 +47,6 @@
       </nav>
 
           <div class="row">
-            <div class="col-md-12">
-              <h1 class="center">Developers best friend</h1>
-              <h4 class="center page-description">Some features which can help developer in everyday job. You can find there paragraphs generator with "Lorem ipsum" sentences, custom user generator and even password generator. </h4>
-            </div>
-          </div>
-
-          <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 nav-content">
                   <div class="list-group table-of-contents">
                     <a class="list-group-item" href="/">
@@ -96,7 +89,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+        <!-- Custom JS-->
         <footer>
           @yield('footer')
         </footer>

@@ -15,9 +15,11 @@ Route::get('/', 'MainController@getIndex');
 
 Route::get('/lorem-ipsum-generator', 'LoremGenController@getIndex');
 Route::post('/lorem-ipsum-generator', 'LoremGenController@postIndex');
+Route::post('/lorem-ipsum-generator/download', 'LoremGenController@postDownload');
 
 Route::get('/user-generator', 'UserGenController@getIndex');
 Route::post('/user-generator', 'UserGenController@postIndex');
+Route::post('/user-generator/download', 'UserGenController@postDownload');
 
 Route::get('/password-generator', 'PassGenController@getIndex');
 Route::post('/password-generator', 'PassGenController@postIndex');

@@ -2,6 +2,7 @@
 
 namespace P3\Http\Controllers;
 
+use Response;
 use Illuminate\Http\Request;
 use P3\Http\Requests;
 use P3\Http\Controllers\Controller;
@@ -14,8 +15,8 @@ class UserGenController extends Controller
     const PROFILE = false;
     const COUNTRY = false;
     const GENDER = false;
-    const FORMAT_TEXT = true;
-    const FORMAT_CSV = false;
+    const FORMAT = 'txt';
+    const TEXT = 'Empty file';
 
     // TODO add CSV generator
 
@@ -37,8 +38,7 @@ class UserGenController extends Controller
               'profile'     =>   'boolean', 
               'country'     =>   'boolean',
               'gender'      =>   'boolean',
-              'formatText'  =>   'boolean',
-              'formatCSV'   =>   'boolean',
+              'format'      =>   'in:txt,csv,json',
               ]; 
     }
 
@@ -49,8 +49,8 @@ class UserGenController extends Controller
         'profile'   => ($request->exists('profile') )   ? $request->get('profile')  :     self::PROFILE,
         'country'   => ($request->exists('country') )   ? $request->get('country')  :     self::COUNTRY,
         'gender'    => ($request->exists('gender') )    ? $request->get('gender')   :     self::GENDER,
-        'formatText'    => ($request->exists('formatText') )  ? $request->get('formatText')  : self::FORMAT_TEXT,
-        'formatCSV'    => ($request->exists('formatCSV') )    ? $request->get('formatCSV')   : self::FORMAT_CSV,
+        'format'    => ($request->exists('format') )    ? $request->get('format')   :     self::FORMAT,
+        'generated_text' => ($request->exists('generated_text') ) ? $request->get('generated_text'):     self::TEXT,
       ];
     }
 
@@ -87,10 +87,53 @@ class UserGenController extends Controller
                 $users[$i] = array_merge($users[$i], Array("country" => $this->faker->country));
             }
 
+            // // set output of data
+            if( $values['format']=='txt'){
+              // implode text and show every new user in new line
+              $users[$i] = implode("\r\n", $users[$i]);  
+            }elseif( $values['format']=='csv'){
+              // add delimiter ; and new line in template thro loop
+              $csv_line = '"';
+                  $csv_line .= implode('";"', $users[$i]).'"';
+              $users[$i] = $csv_line;
+            }elseif( $values['format']=='json'){
+              // convert array when finish all loop
+            }
+          
 
-        }
+        } // end of: for ($i=0; $i < $values['users']; $i++) {
         
+        if( $values['format']=='json'){
+              $users = json_encode($users, JSON_FORCE_OBJECT);
+        }
+
         return $users;
+    }
+
+  /**
+   * Send file to user
+   *
+   * @return suited header and content of file
+   */
+    public function postDownload(Request $request){
+      // standard validation data, do not generate new, only print to file existing
+      $this->validate($request, $this->getValidationRules());
+      $values = $this->getValues($request);
+
+      $filename = "users.".$values['format'];
+
+      $handle = fopen($filename, 'w+');
+      file_put_contents($filename, $values['generated_text']);
+      fclose($handle); 
+        
+      if( $values['format'] == 'txt' ){
+        $headers = array('Content-Type' => 'text/plain');
+        return Response::download($filename, 'users.txt', $headers);
+      }else{
+        $headers = array('Content-Type' => 'text/'.$values['format']); 
+        return Response::download($filename, 'users.'.$values['format'], $headers);  
+      }
+
     }
 
     /**

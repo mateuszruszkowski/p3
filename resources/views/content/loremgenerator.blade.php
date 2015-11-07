@@ -10,7 +10,7 @@
 @stop
 
 @section("description")
-    Write number of paragraphs to generate, copy to clipboard and feel free to use it anywhere.
+    Write number of paragraphs to generate, copy to clipboard or download and feel free to use it anywhere.
 @stop
 
 @section("form")
@@ -22,24 +22,28 @@
             <label for="paragraphsNumber">Paragraphs:</label>
             <input id="paragraphsNumber" type="text" name="paragraphsNumber" maxlength="1" size="1" value={{$paragraphsNumber}} >
             
-            <input id="generate_lorem" type="submit" value="Generate">
+            <input id="generate_lorem" type="submit" class="btn btn-primary btn-xs" value="Generate">
+            @if (isset($paragraphs)) 
+                <input id="copy" type="button" class="btn btn-primary btn-xs" value="Copy to clipboard" />
+                <input id="download_lorem" type="button" class="btn btn-primary btn-xs" value="Download .txt file" />
+            @endif    
         </p>
-    </form>
 @stop
 
 @section("result")
     {{-- show paragraphs when is set --}}
     @if (isset($paragraphs)) 
-        <h2 class="text-center">Custom Lorem Ipsum</h2>
+        <textarea rows="10" cols="80" id="generated_text" name="generated_text">
             @foreach ($paragraphs as $paragraph)
-                <p class="text-lipsum">{{ $paragraph }}</p>
+                {{ $paragraph }}
             @endforeach
-        </div>
+        </textarea>
     @endif
+    </form>
 @stop
 
 @section("footer")
-    <!-- <script src='/js/'></script> -->
+    <script src="{!! URL::asset('js/custom.js'); !!}"></script>
 @stop
 
 
