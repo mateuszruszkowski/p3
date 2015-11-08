@@ -55,7 +55,7 @@ In properties you can change a separator char, number of numbers and special cha
         <div class="row">
         <br />
           <div class="form-group col-sm-12 col-md-12"> {{-- Buttons --}}
-            {!! Form::submit('Generate', array('class' => 'btn btn-primary btn-xs', 'id'=>'generate') ) !!}
+            {!! Form::submit('Generate', array('class' => 'btn btn-primary btn-xs', 'id'=>'generatePass') ) !!}
             @if (isset($passString)) 
               {!! Form::input('button', 'copyPass', 'Copy to clipboard', array('class' => 'btn btn-primary btn-xs', 'id'=>'copyPass') ) !!}
               {!! Form::input('button', 'addBookmark', 'Add Bookmark', array('class' => 'btn btn-primary btn-xs', 'id'=>'addBookmark') ) !!}

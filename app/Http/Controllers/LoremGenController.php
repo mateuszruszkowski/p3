@@ -10,7 +10,10 @@ use Badcow\LoremIpsum\Generator as LoremIpsumGen;
 
 class LoremGenController extends Controller
 {
+    // inicialization of LoremIpsumGenerator
     private $LoremIpsumGen = null;
+
+    // inicialization of const values, used in form
     const PARAGRAPHS_NUMBER = 3;
     const GENERATED_TEXT = 'Nic nie zostało wygenerowane.';
     
@@ -29,57 +32,80 @@ class LoremGenController extends Controller
         return $this->LoremIpsumGen;
     }
 
-
-    private function getParagraphsNumber() {
-      if (isset($_POST['paragraphsNumber'])) {
-          if (strlen($_POST['paragraphsNumber'])<2 && $_POST['paragraphsNumber'] != 0 && is_numeric($_POST['paragraphsNumber'])) {
-            return (int)$_POST['paragraphsNumber'];
-          }
-      }
-      return self::PARAGRAPHS_NUMBER;
+    /**
+    * Validate number of paragraphs 
+    * @return Validation rules
+    */
+    private function getValidationRules() {
+      return ['paragraphsNumber'=>'integer|min:1|max:99']; // integer between 1 and 99
     }
 
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+    * Get values of form inputs or sets defaults
+    * @return Validation rules
+    */
+    private function getValues($request) {
+      return [
+        'paragraphsNumber' => ($request->exists('paragraphsNumber') ) ? $request->get('paragraphsNumber') : self::PARAGRAPHS_NUMBER
+      ];
+    }
+
+
+    /**
+     * Return file to download
      */
-    public function postDownload()
+    public function postDownload(Request $request)
     {
-      $numberOfParagraphs = $this->getParagraphsNumber();
-      $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);
-      $values['generated'] = $_POST['generated_text'];
-        
-      $filename = "lorem_ipsum.txt";
+      // validate form values
+      $this->validate($request, $this->getValidationRules());
+      $values = $this->getValues($request);
+
+      // get generated $_POST text
+      $values['generated'] = $request->get('generated_text');
+      
+      // set handler file name
+      $filename = 'lorem_ipsum.txt';
 
       $handle = fopen($filename, 'w+');
-      file_put_contents($filename, $values['generated']);
+        // add $_POST content to file
+        file_put_contents($filename, $values['generated']);
       fclose($handle); 
-        
+      
+      // download file  
       $headers = array('Content-Type' => 'text/plain');
       return Response::download($filename, (String)$filename, $headers);
     }
 
+
     /**
-     * Display a listing of the resource.
+     * Display form with default values
      *
-     * @return \Illuminate\Http\Response
      */
     public function getIndex(Request $request)
     {
-        return view("content.loremgenerator", ["paragraphsNumber" => self::PARAGRAPHS_NUMBER]);
+      // get default values
+      $values = $this->getValues($request);
+
+      // display default form
+      return view('content.loremgenerator', ['values' => $values] );
     }
 
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display form and generated paragraphs
      */
     public function postIndex(Request $request)
     {
-        $numberOfParagraphs = $this->getParagraphsNumber();
-        $paragraphs = $this->getLipsumGen()->getParagraphs($numberOfParagraphs);
-        return view("content.loremgenerator", ["paragraphs" => $paragraphs, "paragraphsNumber" => strval($numberOfParagraphs)] );
+      // validate form values
+      $this->validate($request, $this->getValidationRules());
+      $values = $this->getValues($request);
+      
+      // generate paragraphs
+      $paragraphs = $this->getLipsumGen()->getParagraphs($values['paragraphsNumber']);
+
+      // display all
+      return view('content.loremgenerator', ['paragraphs' => $paragraphs, 'values' => $values] );
     }
 
 }

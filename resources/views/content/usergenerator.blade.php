@@ -13,7 +13,7 @@
     <b>Select</b> useful information about them
     <b>Choose</b> data format and click generate button
     <b>Copy</b> to clipboard or <b>download</b> file with content.<br />
-    <small><b>(Downloading doesn't generate new content, just use text from textarea)</b></small>
+    <small><b>(Downloading doesn't generate new content, just used text from textarea)</b></small>
     <br /><br />
 @stop
 

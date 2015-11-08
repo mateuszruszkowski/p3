@@ -26,6 +26,7 @@ To generate html elements I use illuminate/html, which laravel used in previous 
 * Bootstrap theme from [bootswatch](http://bootswatch.com/sandstone/)
 * jQuery: [https://jquery.com/](https://jquery.com/)
 * Copy to cliplboard function comes from [https://developers.google.com/](https://developers.google.com/web/updates/2015/04/cut-and-copy-commands)
+* To make possibility to add to bookmark I am based on [http://stackoverflow.com/questions/3024745/cross-browser-bookmark-add-to-favorites-javascript](http://stackoverflow.com/questions/3024745/cross-browser-bookmark-add-to-favorites-javascript)
 * To generate custom users I use [Faker](https://github.com/fzaninotto/Faker)
 * To generate custom Lorem Ipsum paragraphs I use [Badcow/LoremIpsum](https://github.com/Badcow/LoremIpsum)
 * Password generator still use words comming from [www.paulnoll.com](http://www.paulnoll.com/Books/Clear-English/)

@@ -20,7 +20,9 @@ if(cutTextareaBtn != null){
 	});
 }
 
-// Writed in jQuery to use with generated password
+/**
+* Writed in jQuery to use with generated password
+*/
 $( document ).on("click", "#copyPass", function(){
 	$("#toCopy").select();
 
@@ -34,7 +36,7 @@ $( document ).on("click", "#copyPass", function(){
 	} 
 });
 
-/*
+/**
  * Users generator
  */
 
@@ -47,7 +49,7 @@ $( document ).on("click", '#generate', function(){
 	$("Form").attr("action","/user-generator").submit();
 });
 
-/*
+/**
  * Lorem ipsum generator
  */
 
@@ -63,7 +65,22 @@ $( document ).on("click", '#generate_lorem', function(){
 //------------------------------------------------------------------------
 // http://stackoverflow.com/questions/3024745/cross-browser-bookmark-add-to-favorites-javascript
 //------------------------------------------------------------------------
+$( document ).ready(function(){
+	// if we in password generator page  
+	if( window.location.href.indexOf('password-generator')>0 ){
+		// change location after new password was generated
+		var title = 'Generated password';
+		var password = $("#toCopy").val();
+		
+	 	// add password to link if itisn't exist jet
+	 	if( window.location.href.indexOf('passwordg')==-1){
+	 		window.history.pushState("Generated password", title, window.location.href+"&passwordg="+password );	
+	 	}
+	}
 
+});
+
+// click on add to bookmark button
 $( document ).on("click", "#addBookmark", function() {
  	var title = 'Generated password';
  	var password = $("#toCopy").val();
@@ -72,11 +89,12 @@ $( document ).on("click", "#addBookmark", function() {
  		title = $("#bookmark_name").val();
  	}
 
- 	// add password to link if itisn't exist jet
+ 	// add password to link if it isn't exist jet
  	if( window.location.href.indexOf('passwordg')==-1){
  		window.history.pushState("Generated password", title, window.location.href+"&passwordg="+password );	
  	}
 
+ 	// generate title
  	document.title = title;
 
 	if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark

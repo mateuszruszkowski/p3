@@ -8,6 +8,7 @@ use P3\Http\Controllers\Controller;
 
 class PassGenController extends Controller
 {
+    // define const/default values
     const WORDS_NUMBER = 3;
     const NUMBERS = 0;
     const SYMBOLS = 0;
@@ -15,17 +16,26 @@ class PassGenController extends Controller
     const SEPARATOR = '-';
     const ADD_NUM = 0;
     const ADD_SYM = 0;
-    const CASES = 0; // First letter
+    const CASES = 0; // Uppercase only first letter
 
+    /**
+     * Define validation rules for sended form
+     *
+     * @return Validation rules
+     */
     private function getValidationRules() {
-      return ['words_number' =>   'integer|min:1|max:99', // must be an integer between 1 and 99
-             'numbers' =>   'integer|min:0|max:10', // must be an integer between 1 and 10  
-             'symbols' =>   'integer|min:0|max:10', // must be an integer between 1 and 10
-             'max_length' =>   'integer|min:1|max:99', // must be an integer between 1 and 99
-             'cases' =>   'integer|min:0|max:2'];
+      return ['words_number' => 'integer|min:1|max:99', // must be an integer between 1 and 99
+             'numbers'       => 'integer|min:0|max:10', // must be an integer between 1 and 10  
+             'symbols'       => 'integer|min:0|max:10', // must be an integer between 1 and 10
+             'max_length'    => 'integer|min:1|max:99', // must be an integer between 1 and 99
+             'cases'         => 'integer|min:0|max:2'];
     }
 
-
+    /**
+     * Get or set values used to generate users
+     *
+     * @return array of values used to gererate users
+     */
     private function getValues($request) {
       return [
         'words_number' => ($request->exists('words_number') ) ? $request->get('words_number') : self::WORDS_NUMBER,
@@ -37,8 +47,14 @@ class PassGenController extends Controller
       ];
     }
 
+    /**
+     * Generating new passord
+     *
+     * @return generated password
+     */
     private function getPassword($values) {
 
+        // define if we add symbols/numbers or no
         $addN =  ( (int)$values['numbers'] > 0 ) ? 1: 0;
         $addS =  ( (int)$values['symbols'] > 0 ) ? 1: 0;
 
@@ -60,13 +76,11 @@ class PassGenController extends Controller
             if( $i<10 ){    $no_page = '0'.$i;  }else{ $no_page = $i; }
             if( ($i+1) <10 ){ $no_page_plus1 = '0'.($i+1); }else{ $no_page_plus1 = $i+1; }
             $page = file_get_contents('http://www.paulnoll.com/Books/Clear-English/words-'.$no_page.'-'.$no_page_plus1.'-hundred.html');
-            
-            preg_match_all('#<li>.+?</li>#is',$page,$matches);
-            foreach($matches[0] as $match)
-            {
-                $match = trim(preg_replace('/\s\s+/', ' ', $match));
-                preg_match_all('/<li>(.*?)<\/li>/s', $match, $m);
-                $words[] = trim($m[1][0]);
+
+            preg_match_all('/<li>(.*?)<\/li>/s', $page, $matches);
+
+            foreach ($matches[1] as $key => $value) {
+                $words[] = trim($value);
             }
 
         }
@@ -110,6 +124,7 @@ class PassGenController extends Controller
                 for($i=0; $i<($values['symbols']-$values['words_number']);$i++){ $passArray[$values['words_number']-1].= $specials_chars[ rand(0, 7)]; }
             }
 
+            // implode array to generated password
             $passString = implode($values['separator'], $passArray);
 
             # check if password length is smaller than max length, if we find suited password set $x as 10 else end loop as a 5
@@ -130,18 +145,22 @@ class PassGenController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display form with generated password, or page to view from saved bookmark
      */
     public function getGenerated(Request $request)
     {
+        // validate variables, and getting their values
         $this->validate($request, $this->getValidationRules());
         $values = $this->getValues($request);
 
-        if($request->get('passwordg')){
-            $passString = $request->get('passwordg');   
+        // if password was genereated in previous page
+        if( $request->get('bookmark_name') ){
+            $passString = $this->getPassword($values);  
+        }elseif( $request->get('passwordg') ){
+        // if password comes from saved link/bookmark
+            $passString = $request->get('passwordg');      
         }else{
+        // any other example
             $passString = $this->getPassword($values);    
         }
         
@@ -150,9 +169,7 @@ class PassGenController extends Controller
 
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display form with default values
      */
     public function getIndex(Request $request)
     {
