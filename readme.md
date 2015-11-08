@@ -1,5 +1,5 @@
 
-# Project 3 Developers best friend
+# Project 3 Developer's Best Friend
 
 ## Live URL
 <http://p3.mruszkowski.me>
