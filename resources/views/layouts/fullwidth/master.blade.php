@@ -48,7 +48,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <h1 class="center">Developers best friend</h1>
+              <h1 class="center">Developer's Best Friend</h1>
               <h4 class="center page-description">Some features which can help developer in everyday job. You can find there paragraphs generator with "Lorem ipsum" sentences, custom user generator and even password generator. </h4>
             </div>
           </div>
