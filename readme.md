@@ -14,7 +14,7 @@ Second generate custom users profiles, also easy to copy and ready to convert to
 Last one generate xkcd passwords, and this is copy of webapp from p2, but wrote using laravel.
 
 ## Demo
-
+https://youtu.be/NGtKcRUUsWI
 
 ## Details for teaching team
 
